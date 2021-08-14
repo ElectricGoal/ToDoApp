@@ -131,7 +131,7 @@ class _$_Task implements _Task {
 
   @override
   String toString() {
-    return 'Task(name: $name, isDone: $isDone, id: $id)';
+    return 'Task(name: $name, isDone: $isDone, id: $id,)';
   }
 
   @override
