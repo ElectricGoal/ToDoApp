@@ -1,13 +1,8 @@
-class Task {
-  final String name;
-  bool isDone;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  Task({
-    required this.name,
-    this.isDone = false,
-  });
+part 'task.freezed.dart';
 
-  void toggleDone(){
-    isDone = !isDone;
-  }
+@freezed
+class Task with _$Task {
+  const factory Task({String? name, bool? isDone, String? id}) = _Task;
 }

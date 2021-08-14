@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.12.0"
 
 dependencies:
   flutter:
@@ -30,13 +30,23 @@ dependencies:
   cupertino_icons: ^1.0.2
   provider: ^5.0.0
   flutter_slidable: ^0.6.0
-
+  freezed_annotation: ^0.14.3
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  
+  build_runner: ^2.1.1
+  freezed: ^0.14.5
+  uuid: ^3.0.4
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+dependency_overrides:
+  meta: ^1.7.0
+
 
 # The following section is specific to Flutter.
 flutter:

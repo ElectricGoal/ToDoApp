@@ -8,8 +8,16 @@ class TaskCountCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+  
+
   @override
   Widget build(BuildContext context) {
+    String countTask(int count) {
+    if (count == 0) {
+      return 'No task to do';
+    }
+    return count.toString() + ' tasks';
+  }
     return Container(
       margin: EdgeInsets.only(bottom: 20),
       height: SizeConfig.heightMultiplier * 15,
@@ -19,7 +27,7 @@ class TaskCountCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
-            context.watch<TaskData>().tasks.length.toString() + ' tasks',
+            countTask(context.watch<TaskData>().tasks.length),
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w500,
