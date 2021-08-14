@@ -16,7 +16,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //height: SizeConfig.heightMultiplier * 60,
       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
       child: Column(
         children: [
@@ -36,9 +35,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               hintText: 'Enter your task',
               errorText: _validate ? 'Value cannot be empty' : null,
             ),
-            // onChanged: (newValue) {
-            //   newTaskText = newValue;
-            // },
           ),
           SizedBox(
             height: 20,
