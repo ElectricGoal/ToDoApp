@@ -22,7 +22,6 @@ class TaskList extends StatelessWidget {
           itemCount: taskList.tasks.length,
           itemBuilder: (context, index) {
             final task = taskList.tasks[index];
-            //print('rebuild 1');
             return TaskTile(
               task: task,
               taskData: taskList,
@@ -69,7 +68,6 @@ class TaskTile extends StatelessWidget {
           activeColor: Theme.of(context).primaryColor,
           value: task.isDone,
           onChanged: (checkBoxState) {
-            //taskData.upTask(task);
             if (taskData.upgradeTask(task) == false) {
               final snackBar = SnackBar(
                 content: Text('Something went wrong!'),
