@@ -43,6 +43,7 @@ class TaskData extends ChangeNotifier {
       isDone: false,
       id: uuid.v1(),
     );
+    
     tasks = [...tasks]..insert(0, task);
     notifyListeners();
   }
