@@ -29,7 +29,7 @@ class TaskData extends ChangeNotifier {
   }
 
   //check task có tồn tại trong list không
-  bool checkExistTask(String taskId) {
+  bool checkExistTask(String? taskId) {
     final int count = tasks.length;
     tasks = [...tasks]..removeWhere((t) => t.id == taskId);
 
@@ -47,10 +47,10 @@ class TaskData extends ChangeNotifier {
   }
 
   bool upgradeTask(Task task) {
-    if (checkTaskId(task.id!)) {
+    if (checkTaskId(task.id)) {
       return false;
     }
-    if (!checkExistTask(task.id!)) {
+    if (!checkExistTask(task.id)) {
       return false;
     }
     //nếu task chưa check done thì khi bị check done
@@ -74,7 +74,7 @@ class TaskData extends ChangeNotifier {
     if (checkTaskId(taskId)) {
       return false;
     }
-    if (!checkExistTask(taskId!)) {
+    if (!checkExistTask(taskId)) {
       return false;
     }
     notifyListeners();
