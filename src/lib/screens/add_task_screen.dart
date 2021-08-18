@@ -12,7 +12,14 @@ class AddTaskScreen extends StatefulWidget {
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
   final _textController = TextEditingController();
-  bool _validate = false;
+  bool _validated = false;
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +40,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             textAlign: TextAlign.center,
             decoration: InputDecoration(
               hintText: 'Enter your task',
-              errorText: _validate ? 'Value cannot be empty' : null,
+              errorText: _validated ? 'Value cannot be empty' : null,
             ),
           ),
           SizedBox(
@@ -46,10 +53,10 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             onPressed: () {
               setState(() {
                 _textController.text.isEmpty
-                    ? _validate = true
-                    : _validate = false;
+                    ? _validated = true
+                    : _validated = false;
               });
-              if (_validate == false){
+              if (!_validated) {
                 context.read<TaskData>().addTask(_textController.text);
                 Navigator.pop(context);
               }
