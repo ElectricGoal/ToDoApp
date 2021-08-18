@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$TaskTearOff {
   const _$TaskTearOff();
 
-  _Task call({String? name, bool? isDone, String? id}) {
+  _Task call({String? name, dynamic isDone = false, String? id}) {
     return _Task(
       name: name,
       isDone: isDone,
@@ -32,7 +32,7 @@ const $Task = _$TaskTearOff();
 /// @nodoc
 mixin _$Task {
   String? get name => throw _privateConstructorUsedError;
-  bool? get isDone => throw _privateConstructorUsedError;
+  dynamic get isDone => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -43,7 +43,7 @@ mixin _$Task {
 abstract class $TaskCopyWith<$Res> {
   factory $TaskCopyWith(Task value, $Res Function(Task) then) =
       _$TaskCopyWithImpl<$Res>;
-  $Res call({String? name, bool? isDone, String? id});
+  $Res call({String? name, dynamic isDone, String? id});
 }
 
 /// @nodoc
@@ -68,7 +68,7 @@ class _$TaskCopyWithImpl<$Res> implements $TaskCopyWith<$Res> {
       isDone: isDone == freezed
           ? _value.isDone
           : isDone // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as dynamic,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -82,7 +82,7 @@ abstract class _$TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
   factory _$TaskCopyWith(_Task value, $Res Function(_Task) then) =
       __$TaskCopyWithImpl<$Res>;
   @override
-  $Res call({String? name, bool? isDone, String? id});
+  $Res call({String? name, dynamic isDone, String? id});
 }
 
 /// @nodoc
@@ -105,10 +105,7 @@ class __$TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      isDone: isDone == freezed
-          ? _value.isDone
-          : isDone // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      isDone: isDone == freezed ? _value.isDone : isDone,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -120,18 +117,19 @@ class __$TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Task implements _Task {
-  const _$_Task({this.name, this.isDone, this.id});
+  const _$_Task({this.name, this.isDone = false, this.id});
 
   @override
   final String? name;
+  @JsonKey(defaultValue: false)
   @override
-  final bool? isDone;
+  final dynamic isDone;
   @override
   final String? id;
 
   @override
   String toString() {
-    return 'Task(name: $name, isDone: $isDone, id: $id,)';
+    return 'Task(name: $name, isDone: $isDone, id: $id)';
   }
 
   @override
@@ -160,12 +158,12 @@ class _$_Task implements _Task {
 }
 
 abstract class _Task implements Task {
-  const factory _Task({String? name, bool? isDone, String? id}) = _$_Task;
+  const factory _Task({String? name, dynamic isDone, String? id}) = _$_Task;
 
   @override
   String? get name => throw _privateConstructorUsedError;
   @override
-  bool? get isDone => throw _privateConstructorUsedError;
+  dynamic get isDone => throw _privateConstructorUsedError;
   @override
   String? get id => throw _privateConstructorUsedError;
   @override
