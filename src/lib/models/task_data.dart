@@ -11,44 +11,45 @@ class TaskData extends ChangeNotifier {
   List<Task> tasks = [
     Task(
       name: 'Meet friend',
-      isDone: false,
       id: uuid.v1(),
     ),
     Task(
       name: 'Go to gym',
-      isDone: false,
       id: uuid.v1(),
     ),
     Task(
       name: 'Meal the dog',
-      isDone: false,
       id: uuid.v1(),
     ),
   ];
+
+  //check task id is null ?
+  bool checkTaskId(String? taskId) {
+    return taskId == null;
+  }
 
   //check task có tồn tại trong list không
   bool checkExistTask(String taskId) {
     final int count = tasks.length;
     tasks = [...tasks]..removeWhere((t) => t.id == taskId);
 
-    if (tasks.length == count) {
-      return false;
-    }
-    return true;
+    return tasks.length != count;
   }
 
   void addTask(String newTaskText) {
     final task = Task(
       name: newTaskText,
-      isDone: false,
       id: uuid.v1(),
     );
-    
+
     tasks = [...tasks]..insert(0, task);
     notifyListeners();
   }
 
   bool upgradeTask(Task task) {
+    if (checkTaskId(task.id!)) {
+      return false;
+    }
     if (!checkExistTask(task.id!)) {
       return false;
     }
@@ -69,8 +70,11 @@ class TaskData extends ChangeNotifier {
     return true;
   }
 
-  bool deleteTask(String taskId) {
-    if (!checkExistTask(taskId)) {
+  bool deleteTask(String? taskId) {
+    if (checkTaskId(taskId)) {
+      return false;
+    }
+    if (!checkExistTask(taskId!)) {
       return false;
     }
     notifyListeners();
