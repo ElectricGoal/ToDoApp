@@ -4,5 +4,5 @@ part 'task.freezed.dart';
 
 @freezed
 class Task with _$Task {
-  const factory Task({String? name, bool? isDone, String? id}) = _Task;
+  const factory Task({String? name, @Default(false) isDone, String? id}) = _Task;
 }
